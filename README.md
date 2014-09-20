@@ -1,4 +1,4 @@
-# LapisDev Website
+# LapisBlue Website
 This is a static site generated using node + gulp.
 
 ## Development

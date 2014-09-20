@@ -1,0 +1,56 @@
+.navbar.navbar-inverse.navbar-fixed-top
+  .container
+    .row
+      .col-md-12
+        .navbar-header
+          // <a class="navbar-brand" href="http://spongepowered.org"></a>
+          ul.nav.navbar-nav
+            li.dropdown
+              a.dropdown-toggle(href='', data-toggle='dropdown')
+                img.sponge-logo(src='img/sp.png')
+                span.caret
+              ul.dropdown-menu
+                li
+                  a(href='http://spongepowered.org')
+                    i.fa.fa-home.fa-fw
+                    |  Home
+                li
+                  a(href='http://forums.spongepowered.org')
+                    i.fa.fa-pencil.fa-fw
+                    |  Forums
+                li.active
+                  a(href='http://gratimax.net/sponge-temple')
+                    i.fa.fa-cube.fa-fw
+                    |  Cistern
+                li
+                  a(href='https://github.com/SpongePowered')
+                    i.fa.fa-github.fa-fw
+                    |  Code
+        .navbar-right
+          ul.nav.navbar-nav
+            li
+              a(href='search.html')
+                i.fa.fa-search
+            li
+              a.notified.dropdown-toggle(href='', data-toggle='dropdown')
+                i.fa.fa-bell.notify-icon
+                span.badge.notify-badge 3
+              ul.dropdown-menu
+                li
+                  a(href='') Some Notification
+                li
+                  a(href='') Some Notification
+                li
+                  a(href='') Some Notification
+                li.divider
+                li
+                  a(href='')
+                    i.fa.fa-times-circle
+                    |  Clear All
+            li
+              a(href='user.html')
+                img.usr-img(src='img/Notch.png')
+                |  Notch
+            li
+              a(href='index.html')
+                i.fa.fa-sign-out

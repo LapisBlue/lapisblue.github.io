@@ -1,4 +1,4 @@
-# SpongeCommons Website
+# LapisDev Website
 This is a static site generated using node + gulp.
 
 ## Development

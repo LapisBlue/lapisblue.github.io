@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+- '0.10'
+script: npm run-script travis-deploy
+branches:
+  except:
+    - master
+notifications:
+  email: false
+  irc: false
+env:
+  global:
+  - GH_REF: github.com/LapisBlue/lapisdev.github.io
+  - secure: StE48NvBGDJbJZdZuDL1R+0yUt5BGAhMTRmGr5hbbgFmHeTHNnqVa3zQ2m502Zt846HucbwH/7llUfVOkefnihscfRZQy6tzn6oJRw9TWNS5rFuEcV5OMW05XKajgD4ALHLV9WTpmiZrLjIXxnbKxhsFlVlATgoRbDyvgcjrl18=

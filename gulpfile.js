@@ -20,7 +20,7 @@ var serveIndex = require('serve-index');
 var connectLivereload = require('connect-livereload');
 
 var paths = {
-  assets: ['./app/assets/**/*'],
+  assets: ['./app/assets/**/*', './app/assets/.travis.yml'],
   stylus: ['app/**/*.styl', 'app/**/*.css', '!app/**/_*.styl'],
   templates: ['app/**/*.jade', '!app/**/_*.jade'],
   bower: ['bower_components/**/*']

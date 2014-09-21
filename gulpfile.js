@@ -178,6 +178,7 @@ gulp.task('travis-deploy', ['build:prod'], function () {
 
   gulp.src('./public/**/*')
     .pipe(deploy({
+      branch: 'master',
       remoteUrl: "https://" + process.env.GH_TOKEN + "@" + process.env.GH_REF
     }));
 

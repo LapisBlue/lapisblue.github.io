@@ -1,32 +1,51 @@
-//.navbar.navbar-inverse.navbar-fixed-top
+nav.navbar.navbar-default.navbar-fixed-top
   .container
     .row
       .col-md-12
-        .navbar-header
-          // <a class="navbar-brand" href="http://spongepowered.org"></a>
-          ul.nav.navbar-nav
-            li.dropdown
-              a.dropdown-toggle(href='', data-toggle='dropdown')
-                img.sponge-logo(src='img/sp.png')
-                span.caret
-              ul.dropdown-menu
-                li
-                  a(href='http://spongepowered.org')
-                    i.fa.fa-home.fa-fw
-                    |  Home
-                li
-                  a(href='http://forums.spongepowered.org')
-                    i.fa.fa-pencil.fa-fw
-                    |  Forums
-                li.active
-                  a(href='http://gratimax.net/sponge-temple')
-                    i.fa.fa-cube.fa-fw
-                    |  Cistern
-                li
-                  a(href='https://github.com/SpongePowered')
-                    i.fa.fa-github.fa-fw
-                    |  Code
-        .navbar-right
+
+        //- <a class="navbar-brand" href="http://spongepowered.org"></a>
+        ul.nav.navbar-nav
+          li.active
+            a(href='http://lapis.blue').logo-a
+              img.sponge-logo(src='img/lapis-rounded.png')
+              //-span.caret
+            //-ul.dropdown-menu
+              li
+                a(href='http://spongepowered.org')
+                  i.fa.fa-home.fa-fw
+                  |  Home
+              li
+                a(href='http://forums.spongepowered.org')
+                  i.fa.fa-pencil.fa-fw
+                  |  Forums
+              li.active
+                a(href='http://gratimax.net/sponge-temple')
+                  i.fa.fa-cube.fa-fw
+                  |  Cistern
+              li
+                a(href='https://github.com/SpongePowered')
+                  i.fa.fa-github.fa-fw
+                  |  Code
+          li
+            a(href='http://docs.lapis.blue')
+              i.fa.fa-fw.fa-book
+              |  Docs
+          li
+            a(href='https://github.com/LapisBlue')
+              i.fa.fa-fw.fa-github
+              |  Code
+          li
+            a(href='https://ci.lapis.blue')
+              i.fa.fa-fw.fa-tasks
+              |  CI
+        .col-md-7.nav-form
+          .form-group(style='width: 100%')
+            .input-group(style='width: 100%')
+              input.form-control(type="text", placeholder="Search")
+              span.input-group-btn(style='width: 40px')
+                button.btn.btn-default
+                  i.fa.fa-search.fa-fw
+        //-.navbar-right
           ul.nav.navbar-nav
             li
               a(href='search.html')

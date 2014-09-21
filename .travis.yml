@@ -4,7 +4,7 @@ node_js:
 script: npm run-script travis-deploy
 branches:
   except:
-    - master
+  - master
 notifications:
   email: false
   irc: false
@@ -12,3 +12,4 @@ env:
   global:
   - GH_REF: github.com/LapisBlue/lapisdev.github.io
   - secure: StE48NvBGDJbJZdZuDL1R+0yUt5BGAhMTRmGr5hbbgFmHeTHNnqVa3zQ2m502Zt846HucbwH/7llUfVOkefnihscfRZQy6tzn6oJRw9TWNS5rFuEcV5OMW05XKajgD4ALHLV9WTpmiZrLjIXxnbKxhsFlVlATgoRbDyvgcjrl18=
+  - secure: PoeJeXz/Ea8tSbuhurEFnt+g2+c+TapgBnn84W+j0ITkRoquqGqYRe4vPHKYKjJlRKootnu61ACdiZwPAkCI9jB2jNk61r8yBVUsIdF1AZJ7wuJKo0osfJWx5LB7dpyeyQZwhjLYb+s/v9DXkebuXFXejkiHk8N0Wqhy5pe6yZo=

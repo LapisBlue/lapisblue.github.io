@@ -167,7 +167,7 @@ gulp.task('dev', ['watch', 'serve', 'open']);
 
 gulp.task('deploy', ['build:prod'], function () {
 
-  gulp.src('./public/**/*')
+  return gulp.src(['./public/**/*', './public/.travis.yml'])
     .pipe(deploy({
       branch: 'master'
     }));
@@ -176,7 +176,7 @@ gulp.task('deploy', ['build:prod'], function () {
 
 gulp.task('travis-deploy', ['build:prod'], function () {
 
-  gulp.src('./public/**/*')
+  return gulp.src(['./public/**/*', './public/.travis.yml'])
     .pipe(deploy({
       branch: 'master',
       remoteUrl: "https://" + process.env.GH_TOKEN + "@" + process.env.GH_REF

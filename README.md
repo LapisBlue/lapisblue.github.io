@@ -1,4 +1,5 @@
 # LapisBlue Website
+![[travis badge](https://travis-ci.org/LapisBlue/lapisblue.github.io.svg)](
 This is a static site generated using node + gulp.
 
 ## Development

@@ -3,8 +3,8 @@ node_js:
 - '0.10'
 script: npm run-script travis-deploy
 branches:
-  except:
-  - master
+  only:
+  - source
 notifications:
   email: false
   irc: false

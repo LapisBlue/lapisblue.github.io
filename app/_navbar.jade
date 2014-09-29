@@ -2,71 +2,26 @@ nav.navbar.navbar-default.navbar-fixed-top
   .container
     .row
       .col-md-12
-
-        //- <a class="navbar-brand" href="http://spongepowered.org"></a>
-        ul.nav.navbar-nav
-          li.active
-            a(href='http://lapis.blue').logo-a
-              img.sponge-logo(src='img/lapis-rounded.png')
-              //-span.caret
-            //-ul.dropdown-menu
-              li
-                a(href='http://spongepowered.org')
-                  i.fa.fa-home.fa-fw
-                  |  Home
-              li
-                a(href='http://forums.spongepowered.org')
-                  i.fa.fa-pencil.fa-fw
-                  |  Forums
-              li.active
-                a(href='http://gratimax.net/sponge-temple')
-                  i.fa.fa-cube.fa-fw
-                  |  Cistern
-              li
-                a(href='https://github.com/SpongePowered')
-                  i.fa.fa-github.fa-fw
-                  |  Code
-          li
-            a(href='http://docs.lapis.blue')
-              i.fa.fa-fw.fa-book
-              |  Docs
-          li
-            a(href='http://jd.lapis.blue')
-              i.fa.fa-fw.fa-folder-open
-              |  Javadocs
-          li
-            a(href='https://github.com/LapisBlue')
-              i.fa.fa-fw.fa-github
-              |  Code
-          li
-            a(href='http://ci.lapis.blue')
-              i.fa.fa-fw.fa-tasks
-              |  CI
-        //-.navbar-right
+        .navbar-header
+          a.navbar-brand(href='http://lapis.blue').active
+            img.sponge-logo(src='img/lapis-rounded.png')
+          button.navbar-toggle.collapsed(data-toggle='collapse', data-target='#navbar-collapse')
+            i.fa.fa-bars
+        .collapse.navbar-collapse#navbar-collapse
           ul.nav.navbar-nav
             li
-              a(href='search.html')
-                i.fa.fa-search
+              a(href='http://docs.lapis.blue')
+                i.fa.fa-fw.fa-book
+                |  Docs
             li
-              a.notified.dropdown-toggle(href='', data-toggle='dropdown')
-                i.fa.fa-bell.notify-icon
-                span.badge.notify-badge 3
-              ul.dropdown-menu
-                li
-                  a(href='') Some Notification
-                li
-                  a(href='') Some Notification
-                li
-                  a(href='') Some Notification
-                li.divider
-                li
-                  a(href='')
-                    i.fa.fa-times-circle
-                    |  Clear All
+              a(href='http://jd.lapis.blue')
+                i.fa.fa-fw.fa-folder-open
+                |  Javadocs
             li
-              a(href='user.html')
-                img.usr-img(src='img/Notch.png')
-                |  Notch
+              a(href='https://github.com/LapisBlue')
+                i.fa.fa-fw.fa-github
+                |  Code
             li
-              a(href='index.html')
-                i.fa.fa-sign-out
+              a(href='http://ci.lapis.blue')
+                i.fa.fa-fw.fa-tasks
+                |  CI

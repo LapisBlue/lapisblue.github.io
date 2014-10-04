@@ -29,7 +29,7 @@
   },
   "scripts": {
     "dev": "gulp dev",
-    "travis-deploy": "git config --global user.name \"Lapislazuli\" && git config --global user.email \"lapislazuli@lapis.blue\" && ./node_modules/.bin/bower install && ./node_modules/.bin/gulp travis-deploy"
+    "travis-deploy": "./node_modules/.bin/bower install && ./node_modules/.bin/gulp travis-deploy"
   },
   "repository": {
     "type": "git",

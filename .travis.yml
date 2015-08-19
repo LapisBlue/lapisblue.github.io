@@ -1,7 +1,7 @@
 language: node_js
 node_js:
   - '0.10'
-before_script: git clone $LAPIS_DEPLOY $DEPLOY_ROOT && eval $(ssh-agent) && $DEPLOY_ROOT/setup_git.sh
+before_script: git clone $LAPIS_DEPLOY $DEPLOY_ROOT && eval $(ssh-agent) && $DEPLOY_ROOT/setup_git
 script: npm run-script travis-deploy
 after_script: eval $(ssh-agent -k)
 branches:

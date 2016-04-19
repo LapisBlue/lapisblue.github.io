@@ -1,14 +1,11 @@
 var gulp = require('gulp');
-var bower = require('main-bower-files');
 var deploy = require('gulp-gh-pages');
 var rimraf = require('gulp-rimraf');
-var uglify = require('gulp-uglify');
-var minify = require('gulp-minify-css');
+var minify = require('gulp-clean-css');
 var concat = require('gulp-concat');
 var templates = require('gulp-jade');
 var stylus = require('gulp-stylus');
 var sourcemaps = require('gulp-sourcemaps');
-var filter = require('gulp-filter');
 var livereload = require('gulp-livereload');
 var runseq = require('run-sequence');
 var open = require('open');
@@ -22,8 +19,7 @@ var connectLivereload = require('connect-livereload');
 var paths = {
   assets: ['./app/assets/**/*', './app/assets/.travis.yml'],
   stylus: ['app/**/*.styl', 'app/**/*.css', '!app/**/_*.styl'],
-  templates: ['app/**/*.jade', '!app/**/_*.jade'],
-  bower: ['bower_components/**/*']
+  templates: ['app/**/*.jade', '!app/**/_*.jade']
 };
 
 // BUILD
@@ -56,30 +52,6 @@ gulp.task('templates', function () {
 
 });
 
-gulp.task('bower', function () {
-
-  var js = filter('**/*.js');
-  var css = filter('**/*.css');
-
-  var b = gulp.src(bower(), {base: 'bower_components/'});
-
-  b
-    .pipe(js)
-    .pipe(sourcemaps.init({loadMaps: true}))
-    .pipe(concat('vendor.js'))
-    .pipe(sourcemaps.write('../maps/', {sourceRoot: '../bower_components/'}))
-    .pipe(gulp.dest('./public/js'));
-
-  return b
-    .pipe(css)
-    .pipe(sourcemaps.init({loadMaps: true}))
-    .pipe(concat('vendor.css'))
-    .pipe(sourcemaps.write('../maps/', {sourceRoot: '../bower_components/'}))
-    .pipe(gulp.dest('./public/css'));
-
-
-});
-
 // PRODUCTION BUILD
 
 gulp.task('stylus:prod', function () {
@@ -94,38 +66,16 @@ gulp.task('stylus:prod', function () {
 
 });
 
-gulp.task('bower:prod', function () {
-
-  var js = filter('**/*.js');
-  var css = filter('**/*.css');
-
-  var b = gulp.src(bower(), {base: 'bower_components/'});
-
-  b
-    .pipe(js)
-    .pipe(concat('vendor.js'))
-    .pipe(uglify())
-    .pipe(gulp.dest('./public/js'));
-
-  return b
-    .pipe(css)
-    .pipe(concat('vendor.css'))
-    .pipe(minify())
-    .pipe(gulp.dest('./public/css'));
-
-
-});
-
 gulp.task('clean', function () {
   return gulp.src('./public', {read: false})
     .pipe(rimraf());
 });
 
-gulp.task('build', ['bower', 'templates', 'stylus', 'assets']);
+gulp.task('build', ['templates', 'stylus', 'assets']);
 gulp.task('build:prod', function (cb) {
   runseq(
     'clean',
-    ['bower:prod','templates', 'stylus:prod', 'assets'],
+    ['templates', 'stylus:prod', 'assets'],
     cb
   );
 });
@@ -153,7 +103,6 @@ gulp.task('watch', ['build'], function () {
   gulp.watch(paths.assets, ['assets']);
   gulp.watch(['app/**/*.styl'], ['stylus']);
   gulp.watch(['app/**/*.jade'], ['templates']);
-  gulp.watch(paths.bower, ['bower']);
 
 });
 

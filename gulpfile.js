@@ -1,23 +1,23 @@
-var gulp = require('gulp');
-var bower = require('main-bower-files');
-var deploy = require('gulp-gh-pages');
-var rimraf = require('gulp-rimraf');
-var uglify = require('gulp-uglify');
-var minify = require('gulp-minify-css');
-var concat = require('gulp-concat');
-var templates = require('gulp-jade');
-var stylus = require('gulp-stylus');
-var sourcemaps = require('gulp-sourcemaps');
-var filter = require('gulp-filter');
-var livereload = require('gulp-livereload');
-var runseq = require('run-sequence');
-var open = require('open');
+var gulp = require('gulp'),
+    bower = require('main-bower-files'),
+    deploy = require('gulp-gh-pages'),
+    rimraf = require('gulp-rimraf'),
+    uglify = require('gulp-uglify'),
+    cleanCSS = require('gulp-clean-css'),
+    concat = require('gulp-concat'),
+    templates = require('gulp-jade'),
+    stylus = require('gulp-stylus'),
+    sourcemaps = require('gulp-sourcemaps'),
+    filter = require('gulp-filter'),
+    livereload = require('gulp-livereload'),
+    runseq = require('run-sequence'),
+    open = require('open');
 
 // server stuff
-var connect = require('connect');
-var serveStatic = require('serve-static');
-var serveIndex = require('serve-index');
-var connectLivereload = require('connect-livereload');
+var connect = require('connect'),
+    serveStatic = require('serve-static'),
+    serveIndex = require('serve-index'),
+    connectLivereload = require('connect-livereload');
 
 var paths = {
   assets: ['./app/assets/**/*', './app/assets/.travis.yml'],
@@ -29,14 +29,11 @@ var paths = {
 // BUILD
 
 gulp.task('assets', function () {
-
   return gulp.src(paths.assets)
     .pipe(gulp.dest('./public'));
-
 });
 
 gulp.task('stylus', function () {
-
   return gulp.src(paths.stylus)
     .pipe(sourcemaps.init())
     .pipe(stylus({
@@ -45,19 +42,15 @@ gulp.task('stylus', function () {
     .pipe(concat('app.css'))
     .pipe(sourcemaps.write('../maps/', {sourceRoot: '../app/'}))
     .pipe(gulp.dest('./public/css'));
-
 });
 
 gulp.task('templates', function () {
-
   return gulp.src(paths.templates)
     .pipe(templates())
     .pipe(gulp.dest('./public'));
-
 });
 
 gulp.task('bower', function () {
-
   var js = filter('**/*.js');
   var css = filter('**/*.css');
 
@@ -76,26 +69,21 @@ gulp.task('bower', function () {
     .pipe(concat('vendor.css'))
     .pipe(sourcemaps.write('../maps/', {sourceRoot: '../bower_components/'}))
     .pipe(gulp.dest('./public/css'));
-
-
 });
 
 // PRODUCTION BUILD
 
 gulp.task('stylus:prod', function () {
-
   return gulp.src(paths.stylus)
     .pipe(stylus({
       use: require('nib')()
     }))
     .pipe(concat('app.css'))
-    .pipe(minify())
+    .pipe(cleanCSS())
     .pipe(gulp.dest('./public/css'));
-
 });
 
 gulp.task('bower:prod', function () {
-
   var js = filter('**/*.js');
   var css = filter('**/*.css');
 
@@ -110,10 +98,8 @@ gulp.task('bower:prod', function () {
   return b
     .pipe(css)
     .pipe(concat('vendor.css'))
-    .pipe(minify())
+    .pipe(cleanCSS())
     .pipe(gulp.dest('./public/css'));
-
-
 });
 
 gulp.task('clean', function () {
@@ -149,12 +135,10 @@ gulp.task('serve', ['build'], function () {
 });
 
 gulp.task('watch', ['build'], function () {
-
   gulp.watch(paths.assets, ['assets']);
   gulp.watch(['app/**/*.styl'], ['stylus']);
   gulp.watch(['app/**/*.jade'], ['templates']);
   gulp.watch(paths.bower, ['bower']);
-
 });
 
 gulp.task('open', ['serve'], function () {
@@ -166,20 +150,16 @@ gulp.task('dev', ['watch', 'serve', 'open']);
 // DEPLOYMENT
 
 gulp.task('deploy', ['build:prod'], function () {
-
   return gulp.src(['./public/**/*', './public/.travis.yml'])
     .pipe(deploy({
       branch: 'master'
     }));
-
 });
 
 gulp.task('travis-deploy', ['build:prod'], function () {
-
   return gulp.src(['./public/**/*', './public/.travis.yml'])
     .pipe(deploy({
       branch: 'master',
       remoteUrl: process.env.GIT_REPO
     }));
-
 });
